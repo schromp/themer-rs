@@ -23,19 +23,26 @@ struct Blur {
 
 impl Hyprland {
     pub fn apply_hyprland(&self, colorscheme: Option<&Colorscheme>) -> Result<(), HyprError> {
-
         if !self.enable {
             debug!("Skipping Hyprland because it is not enabled");
             return Ok(());
         }
         debug!("Setting Hyprland settings");
 
+        // Border Color
         match colorscheme {
             Some(colorscheme) => {
-                // Border Color
-                debug!("Setting Hyprland <border_color>");
                 // TODO: allow multi colors
+                debug!(
+                    "Setting Hyprland <active_border_color> to {}",
+                    colorscheme.base0d
+                );
                 Keyword::set("general:col.active_border", colorscheme.base0d)?; //  and base08
+
+                debug!(
+                    "Setting Hyprland <inactive_border_color> to {}",
+                    colorscheme.base04
+                );
                 Keyword::set("general:col.inactive_border", colorscheme.base04)?;
             }
             None => {
@@ -44,7 +51,7 @@ impl Hyprland {
         }
 
         // Opacity
-        debug!("Setting Hyprland <opacity>");
+        debug!("Setting Hyprland <opacity> to {}", self.opacity);
         Keyword::set("decoration:active_opacity", self.opacity)?;
 
         // Blur
@@ -59,7 +66,7 @@ impl Hyprland {
         }
 
         // Rounding
-        debug!("Setting Hyprland <rounding>");
+        debug!("Setting Hyprland <rounding> to {}", self.rounding);
         Keyword::set("decoration:rounding", self.rounding)?;
 
         Ok(())
