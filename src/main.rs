@@ -10,6 +10,7 @@ mod programs {
     pub mod swww;
     pub mod tmux;
     pub mod zsh;
+    pub mod nvim;
 }
 
 fn main() {

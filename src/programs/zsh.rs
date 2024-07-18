@@ -30,6 +30,7 @@ impl Zsh {
                     colorscheme.base0a, colorscheme.base0d, colorscheme.base0e
                 );
 
+                debug!("Writing to zsh theme file {}", self.path);
                 match File::create(&self.path) {
                     Ok(mut theme_file) => {
                         if let Err(e) = theme_file.write_all(&file_contents.as_bytes()) {
