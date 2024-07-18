@@ -5,7 +5,6 @@ use serde::Deserialize;
 use crate::settings::colorscheme::Colorscheme;
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct Hyprland {
     enable: bool,
     opacity: f32,
@@ -14,15 +13,14 @@ pub struct Hyprland {
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 struct Blur {
-    pub enabled: bool,
+    pub enable: bool,
     pub size: i32,
     pub passes: i32,
 }
 
 impl Hyprland {
-    pub fn apply_hyprland(&self, colorscheme: Option<&Colorscheme>) -> Result<(), HyprError> {
+    pub fn apply(&self, colorscheme: Option<&Colorscheme>) -> Result<(), HyprError> {
         if !self.enable {
             debug!("Skipping Hyprland because it is not enabled");
             return Ok(());
@@ -55,14 +53,14 @@ impl Hyprland {
         Keyword::set("decoration:active_opacity", self.opacity)?;
 
         // Blur
-        if self.blur.enabled {
+        if self.blur.enable {
             debug!("Setting Hyprland <blur> to enabled and applying settings");
-            Keyword::set("decoration:blur:enabled", self.blur.enabled.to_string())?;
+            Keyword::set("decoration:blur:enabled", self.blur.enable.to_string())?;
             Keyword::set("decoration:blur:size", self.blur.size.to_string())?;
             Keyword::set("decoration:blur:passes", self.blur.passes.to_string())?;
         } else {
             debug!("Setting Hyprland <blur> to disabled");
-            Keyword::set("decoration:blur:enabled", self.blur.enabled.to_string())?;
+            Keyword::set("decoration:blur:enabled", self.blur.enable.to_string())?;
         }
 
         // Rounding
