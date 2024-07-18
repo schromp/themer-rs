@@ -1,3 +1,6 @@
+[General]
+colorscheme = "default"
+
 [Hyprland]
 enable = false
 transparency = 1.0
@@ -5,6 +8,10 @@ rounding = 0
 opacity = 1
 
 [Hyprland.blur]
-enabled = false
+enable = false
 size = 0
 passes = 0
+
+[Kitty]
+enabled = false
+path = "~/.config/kitty/test.conf"
