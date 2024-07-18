@@ -1,0 +1,19 @@
+# This is tokyonight. See https://github.com/viniciusmuller/base16-tokyonight-scheme
+[colorschemes.default]
+
+base00 = 0x24283b
+base01 = 0x1f2335
+base02 = 0x292e42
+base03 = 0x565f89
+base04 = 0xa9b1d6
+base05 = 0xc0caf5
+base06 = 0xc0caf5
+base07 = 0xc0caf5
+base08 = 0xf7768e
+base09 = 0xff9e64
+base0A = 0xe0af68
+base0B = 0x9ece6a
+base0C = 0x1abc9c
+base0D = 0x41a6b5
+base0E = 0xbb9af7
+base0F = 0xff007c
