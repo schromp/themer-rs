@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
 
-use crate::settings::settings::Settings;
+use crate::{cache::Cache, settings::settings::Settings};
 
 #[derive(Parser)]
 #[command(name = "themer")]
@@ -22,7 +22,7 @@ enum Commands {
 #[derive(Subcommand)]
 enum PresetCommands {
     List,
-    Set { preset_name: String },
+    Set { preset: Option<String>},
 }
 
 impl Cli {
@@ -32,12 +32,22 @@ impl Cli {
                 PresetCommands::List => {
                     println!("This is still todo :)");
                 }
-                PresetCommands::Set { preset_name } => {
+                PresetCommands::Set { preset } => {
                     println!("set");
 
+                    let cache= Cache::get_cache().unwrap();
+
+                    let preset = match preset {
+                        Some(preset) => preset,
+                        None => {
+                            cache.get_preset()
+                        },
+                    };
+
                     let settings =
-                        Settings::new(preset_name).expect("Error while reading in the config.");
+                        Settings::new(preset).expect("Error while reading in the config.");
                     settings.apply();
+                    Cache::create_cache(preset.to_string());
                 }
             },
         }

@@ -1,6 +1,7 @@
 use clap::Parser;
 use cli::cli::Cli;
 
+mod cache;
 mod cli {
     pub mod cli;
 }
