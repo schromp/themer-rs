@@ -1,7 +1,9 @@
-use settings::Settings;
+use settings::settings::Settings;
 
-mod colorscheme;
-mod settings;
+mod settings {
+    pub mod settings;
+    pub mod colorscheme;
+}
 mod programs {
     pub mod hyprland;
 }

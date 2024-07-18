@@ -2,7 +2,7 @@ use hyprland::{keyword::Keyword, shared::HyprError};
 use log::{debug, info};
 use serde::Deserialize;
 
-use crate::colorscheme::Colorscheme;
+use crate::settings::colorscheme::Colorscheme;
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
