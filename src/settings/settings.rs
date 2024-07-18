@@ -4,10 +4,9 @@ use config::{Config, ConfigError, File};
 use log::error;
 use serde::Deserialize;
 
-use crate::programs::{hyprland::Hyprland, kitty::Kitty};
+use crate::programs::{hyprland::Hyprland, kitty::Kitty, swww::Swww};
 
 use super::colorscheme::Colorscheme;
-
 
 #[derive(Debug, Deserialize)]
 struct General {
@@ -20,6 +19,7 @@ pub struct Settings {
     colorschemes: HashMap<String, Colorscheme>,
     hyprland: Hyprland,
     kitty: Kitty,
+    swww: Swww,
 }
 
 impl Settings {
@@ -34,15 +34,13 @@ impl Settings {
     }
 
     pub fn apply(&self) {
-
         let colorscheme = self.colorschemes.get(&self.general.colorscheme);
 
         if let Err(e) = self.hyprland.apply(colorscheme) {
             error!("Error applying Hyprland settings: {:?}", e);
         }
 
-        if let Err(e) = self.kitty.apply(colorscheme) {
-            error!("Error applying Hyprland settings: {:?}", e);
-        }
+        self.kitty.apply(colorscheme);
+        self.swww.apply();
     }
 }

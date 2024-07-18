@@ -7,6 +7,7 @@ mod settings {
 mod programs {
     pub mod hyprland;
     pub mod kitty;
+    pub mod swww;
 }
 
 fn main() {

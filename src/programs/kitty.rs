@@ -37,10 +37,10 @@ impl fmt::Display for ConfLine {
 }
 
 impl Kitty {
-    pub fn apply(&self, colorscheme: Option<&Colorscheme>) -> Result<(), ()> {
+    pub fn apply(&self, colorscheme: Option<&Colorscheme>) {
         if !self.enable {
             debug!("Skipping Kitty because it is not enabled");
-            return Ok(());
+            return;
         }
 
         let mut lines: Vec<ConfLine> = Vec::new();
@@ -84,7 +84,6 @@ impl Kitty {
             }
             Err(e) => error!("Couldnt access the kitty theme file: {}", e),
         }
-        Ok(())
     }
     fn refresh(&self) {
         let mut system = sysinfo::System::new();

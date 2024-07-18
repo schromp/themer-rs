@@ -13,5 +13,10 @@ size = 0
 passes = 0
 
 [Kitty]
-enabled = false
+enable = false
 path = "~/.config/kitty/test.conf"
+
+[Swww]
+enable = false
+wallpaper_dir = "~/Pictures/Wallpaper/"
+wallpaper = "wallpaper.png"
