@@ -1,0 +1,10 @@
+[Hyprland]
+enable = false
+transparency = 1.0
+rounding = 0
+opacity = 1
+
+[Hyprland.blur]
+enabled = false
+size = 0
+passes = 0
