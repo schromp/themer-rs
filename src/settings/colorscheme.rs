@@ -5,6 +5,7 @@ use serde::Deserialize;
 pub struct Colorscheme {
     pub base00: i32,
     pub base01: i32,
+    pub base02: i32,
     pub base03: i32,
     pub base04: i32,
     pub base05: i32,

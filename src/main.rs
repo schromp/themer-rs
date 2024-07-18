@@ -6,6 +6,7 @@ mod settings {
 }
 mod programs {
     pub mod hyprland;
+    pub mod kitty;
 }
 
 fn main() {
