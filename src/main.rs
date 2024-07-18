@@ -1,16 +1,20 @@
-use settings::settings::Settings;
+use clap::Parser;
+use cli::cli::Cli;
 
+mod cli {
+    pub mod cli;
+}
 mod settings {
-    pub mod settings;
     pub mod colorscheme;
+    pub mod settings;
 }
 mod programs {
     pub mod hyprland;
     pub mod kitty;
+    pub mod nvim;
     pub mod swww;
     pub mod tmux;
     pub mod zsh;
-    pub mod nvim;
 }
 
 fn main() {
@@ -20,7 +24,6 @@ fn main() {
 
     env_logger::init_from_env(env);
 
-    let settings = Settings::new().expect("Error while reading in the config.");
-
-    settings.apply();
+    let cli = Cli::parse();
+    cli.run();
 }

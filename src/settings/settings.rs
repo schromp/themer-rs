@@ -4,7 +4,9 @@ use config::{Config, ConfigError, File};
 use log::error;
 use serde::Deserialize;
 
-use crate::programs::{hyprland::Hyprland, kitty::Kitty, nvim::Nvim, swww::Swww, tmux::Tmux, zsh::Zsh};
+use crate::programs::{
+    hyprland::Hyprland, kitty::Kitty, nvim::Nvim, swww::Swww, tmux::Tmux, zsh::Zsh,
+};
 
 use super::colorscheme::Colorscheme;
 
@@ -26,11 +28,12 @@ pub struct Settings {
 }
 
 impl Settings {
-    pub fn new() -> Result<Self, ConfigError> {
+    pub fn new(preset: &str) -> Result<Self, ConfigError> {
         let con = Config::builder()
             .add_source(File::with_name("config/default.toml"))
             .add_source(File::with_name("config/debug.toml"))
             .add_source(File::with_name("config/colorschemes/default.toml"))
+            .add_source(File::with_name(&format!("config/presets/{}.toml", &preset)))
             .build()?;
 
         con.try_deserialize()
