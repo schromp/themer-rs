@@ -4,7 +4,10 @@ use config::{Config, ConfigError, File};
 use log::error;
 use serde::Deserialize;
 
-use crate::{colorscheme::Colorscheme, programs::hyprland::Hyprland};
+use crate::programs::hyprland::Hyprland;
+
+use super::colorscheme::Colorscheme;
+
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
