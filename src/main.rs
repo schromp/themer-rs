@@ -8,6 +8,7 @@ mod programs {
     pub mod hyprland;
     pub mod kitty;
     pub mod swww;
+    pub mod tmux;
 }
 
 fn main() {
