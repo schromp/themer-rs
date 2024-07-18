@@ -24,3 +24,7 @@ wallpaper = "wallpaper.png"
 [Tmux]
 enable = false
 path = "~/.config/tmux/test.conf"
+
+[Zsh]
+enable = false
+path = "/home/lk/.config/zsh/test.conf"

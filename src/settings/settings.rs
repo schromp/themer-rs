@@ -4,7 +4,7 @@ use config::{Config, ConfigError, File};
 use log::error;
 use serde::Deserialize;
 
-use crate::programs::{hyprland::Hyprland, kitty::Kitty, swww::Swww, tmux::Tmux};
+use crate::programs::{hyprland::Hyprland, kitty::Kitty, swww::Swww, tmux::Tmux, zsh::Zsh};
 
 use super::colorscheme::Colorscheme;
 
@@ -20,7 +20,8 @@ pub struct Settings {
     hyprland: Hyprland,
     kitty: Kitty,
     swww: Swww,
-    tmux: Tmux
+    tmux: Tmux,
+    zsh: Zsh,
 }
 
 impl Settings {
@@ -44,5 +45,6 @@ impl Settings {
         self.kitty.apply(colorscheme);
         self.swww.apply();
         self.tmux.apply(colorscheme);
+        self.zsh.apply(colorscheme);
     }
 }

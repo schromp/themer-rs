@@ -9,6 +9,7 @@ mod programs {
     pub mod kitty;
     pub mod swww;
     pub mod tmux;
+    pub mod zsh;
 }
 
 fn main() {
